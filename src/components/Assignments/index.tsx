@@ -1,14 +1,14 @@
 import { Assignment } from "../Assignment";
 import styles from "./assignments.module.css";
 
-export function Assignments({createdCount, assignList, setAssignList}) {
+export function Assignments({assignList, setAssignList}) {
 
   return (
     <section className={styles.assignments}>
       <header className={styles.header}>
         <div>
           <p>Created Assignments</p>
-          <span>{createdCount}</span>
+          <span>{assignList.length}</span>
         </div>
 
         <div>
