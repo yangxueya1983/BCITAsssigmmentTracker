@@ -1,5 +1,6 @@
 import styles from "./assignment.module.css";
 import { TbTrash } from "react-icons/tb";
+import { BsCheck } from "react-icons/bs";
 
 export function Assignment({assignItem, assignList, setAssignList}) {
 
@@ -12,19 +13,18 @@ export function Assignment({assignItem, assignList, setAssignList}) {
 
   const doneAssignment = () => {
     const updatedList = assignList.map((item) =>
-      item.id === assignItem.id ? { ...item, completed: true } : item
+      item.id === assignItem.id ? { ...item, completed: !assignItem.completed } : item
     );
     setAssignList(updatedList);
   } 
-  //onClick={doneAssignment(assignItem.id)} 
   
   return (
     <div className={styles.assignment}>
       <button onClick={doneAssignment} className={styles.checkContainer}>
-        <div />
+        {assignItem.completed? <BsCheck /> : <div />}
       </button>
 
-      <p>{assignItem.title}</p>
+      <p className={assignItem.completed ? styles.textCompleted: ""}>{assignItem.title}</p>
 
       <button onClick={deleteAssignment} className={styles.deleteButton}>
         <TbTrash size={20} />
