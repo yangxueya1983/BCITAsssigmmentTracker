@@ -9,33 +9,19 @@ type AssignData = {
   deleted: boolean
 }
 
-// interface AssigDataListProps {
-//   assignments:AssignData[]
-// }
+type Props = {
+  assignments:AssignData[],
+  setAssignments: any
+}
 
 function App() {
-  const testData = {
-    id: 0,
-    title: "test",
-    completed: false,
-    deleted: false
-  }
-  const testData2 = {
-    id: 1,
-    title: "test",
-    completed: false,
-    deleted: false
-  }
 
-  const testArr = [/*testData, testData2*/]
-
-  const [createdCount, setCreatedCount] = useState(testArr.length)
-  const [assignList, setAssignList] = useState(testArr)
+  const [assignList, setAssignList] = useState<AssignData[]>([])
 
   return (
     <>
-    <Header createdCount={createdCount} setCreatedCount = {setCreatedCount} assignList={assignList} setAssignList={setAssignList}/>
-    <Assignments createdCount={createdCount} assignList={assignList} setAssignList={setAssignList}/>
+    <Header assignList={assignList} setAssignList={setAssignList}/>
+    <Assignments assignList={assignList} setAssignList={setAssignList}/>
     </>
   );
 }
